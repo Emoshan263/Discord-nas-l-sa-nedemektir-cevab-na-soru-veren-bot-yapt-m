@@ -1,0 +1,32 @@
+import discord
+import random
+import os
+from discord.ext import commands
+from GüçlüŞifreler import sifre_olusturucu
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'{bot.user} olarak giriş yaptık')
+
+@bot.command()
+async def sa_nedemek(ctx):
+    await ctx.send(f'sa kelimesinin açılımı Selamın Aleykümdur. Peki bu ne anlama gelir Selam vermek anlamınada gelebilir ve bunun tam tersi as kelimesi veardır.As ne demektir as ise Aleykum selam demektir.')
+    imageslist = os.listdir('images')
+    with open(f'images/{random.choice(imageslist)}', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file = picture)
+
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
+
+@bot.command()
+async def sifre(ctx):
+    await ctx.send(sifre_olusturucu())
+
+bot.run("botun tokeni")
