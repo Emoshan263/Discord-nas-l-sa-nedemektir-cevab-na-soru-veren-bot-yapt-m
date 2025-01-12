@@ -1,0 +1,1 @@
+# Discord-nas-l-sa-nedemektir-cevab-na-soru-veren-bot-yapt-m
